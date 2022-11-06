@@ -5,59 +5,96 @@ import Card from "../components/Card.astro";
 
 <Layout title="Welcome to Astro.">
   <main>
-    <p>
-      Hi!
-      <br />
-      My name is
-      <span>Adrian Sebastian Haynes</span>. I am a
-      <span>web developer</span>,
-      <span>musician</span>, and
-      <span>horror movie fanatic</span>.
+    <p class="intro">
+      <span class="greeting">Hi!</span>
+      <br /><br />
+      My name is <span class="name">Adrian Sebastian Haynes</span>. I am a
+      <span class="interest">web developer</span>,
+      <span class="interest">musician</span>, and
+      <span class="interest">horror movie fanatic</span>.
     </p>
   </main>
+  <nav class="active">
+    <div class="menu">
+      <ul>
+        <li><a href="#">Web</a></li>
+        <li><a href="#">Music</a></li>
+        <li><a href="#">Movies</a></li>
+      </ul>
+    </div>
+    <button class="open">Menu</button>
+    <button class="close">X</button>
+  </nav>
 </Layout>
 
 <style>
-  main {
-    margin: auto;
-    padding: 1.5rem;
-    max-width: 60ch;
-  }
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
+  body {
+    height: 100vh;
     margin: 0;
   }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
+  main {
+    margin: auto;
+    position: relative;
+    padding: 1.5rem;
+    max-width: 80ch;
   }
-  .instructions {
-    line-height: 1.6;
-    margin: 1rem 0;
-    border: 1px solid rgba(var(--accent), 25%);
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.4rem;
+  main .intro {
+    font-size: 3rem;
+    font-weight: normal;
+    margin: 0;
   }
-  .instructions code {
-    font-size: 0.875em;
+  .greeting {
+    font-size: 3.5rem;
+  }
+  .greeting,
+  .name,
+  .interest {
+    font-weight: bolder;
+  }
+  nav .menu {
+    align-items: center;
+    background: #ddd;
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  nav .open {
+    display: block;
+  }
+  nav .close {
+    display: none;
+  }
+  nav.active .menu {
+    display: flex;
+  }
+  nav.active .open {
+    display: none;
+  }
+  nav.active .close {
+    display: block;
+  }
+  .menu ul {
+    font-size: 3rem;
+    list-style: none;
+  }
+  .menu li {
+    padding: 1rem 0;
+  }
+  nav button {
+    border: 2px solid #000;
+    border-radius: 50%;
+    bottom: 2rem;
+    background: #ddd;
+    cursor: pointer;
+    font-size: 1.5rem;
     font-weight: bold;
-    background: rgba(var(--accent), 12%);
-    color: rgb(var(--accent));
-    border-radius: 4px;
-    padding: 0.3em 0.45em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
-    padding: 0;
+    height: 6rem;
+    position: absolute;
+    right: 2rem;
+    text-transform: uppercase;
+    width: 6rem;
   }
 </style>
