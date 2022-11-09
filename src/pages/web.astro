@@ -1,0 +1,78 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Card from "../components/Card.astro";
+import { Icon } from "astro-icon";
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <h1>Web</h1>
+    <h2>Projects</h2>
+    <ul class="projects">
+      <Card
+        href="https://github.com/ashpoz/spotify-playlist-generator-server"
+        title="Spotify Playlist by Genre App "
+        body="I love getting into a genre by exploring it's top/most listened to albums. This playlist generator searches thru Spotify data using their API to search a selected number of albums by genre. Each query selects a random assortment of popular albums of that genre. Built w/ React and express.js."
+      />
+      <Card
+        href="https://github.com/ashpoz/landing-page-generator"
+        title="Landing Page Generator "
+        body="This is simple, no-code landing page generator that allows a user to select a template, and fill out it's contents via form fields, then outputs the HTML and CSS code necessary. Built w/ React."
+      />
+    </ul>
+    <hr />
+    <div class="socials">
+      <h2>Follow me!</h2>
+      <a href="https://github.com/ashpoz" target="_blank"
+        ><Icon name="akar-icons:github-fill" />
+      </a>
+      <a href="https://www.linkedin.com/in/adrianshaynes/" target="_blank"
+        ><Icon name="akar-icons:linkedin-fill" />
+      </a>
+      <a href="https://codepen.io/ashpoz" target="_blank"
+        ><Icon name="akar-icons:codepen-fill" />
+      </a>
+      <a href="https://codesandbox.io/u/hellomaryjo" target="_blank"
+        ><Icon name="cib:codesandbox" />
+      </a>
+    </div>
+  </main>
+  <Nav />
+  <script>
+    import "../scripts/menu.ts";
+  </script>
+</Layout>
+
+<style>
+  body {
+    height: 100vh;
+    margin: 0;
+  }
+  main {
+    margin: auto;
+    position: relative;
+    padding: 1.5rem;
+    max-width: 80ch;
+  }
+  main .intro {
+    font-size: 3rem;
+    font-weight: normal;
+    margin: 0;
+    padding-bottom: 2rem;
+  }
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0;
+  }
+  .socials a {
+    display: inline-flex;
+    height: 2rem;
+    width: 2rem;
+  }
+  .socials a:not(:last-child) {
+    padding-right: 1rem;
+  }
+</style>

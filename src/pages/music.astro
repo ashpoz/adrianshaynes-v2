@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Card from "../components/Card.astro";
+---
+
+<Layout title="Music">
+  <main>
+    <h1>Music</h1>
+    <h2>Projects</h2>
+    <ul class="projects">
+      <Card
+        href="https://www.youtube.com/watch?v=hrT-ITNT7rg"
+        title="Alex Napping at Audiotree"
+        body="Alex Napping was band from Austin TX/NYC from around 2014-2019. I played guitar, arranged and cowrote for the band."
+      />
+      <Card
+        href="https://open.spotify.com/album/5ThctQd8gzBrgccsiFnAe7"
+        title="Dominic Sen - Visitor"
+        body="Alex (yes, from Alex Napping) started a solo project called Dominic Sen in 2019. I played guitar on this record and it was one of the most fun experiences I've had in the studio. All ideas were explored, and what ended on the record was very different than what we started with."
+      />
+      <Card
+        href="https://open.spotify.com/album/7Gedr2Ey9EVjYlGg2G68b9"
+        title="Major Major Major - Apocalpyse Now & Then"
+        body="This was one of the more recent songs I wrote for Major Major Major, a band I started and have been playing with on and off since 2008. "
+      />
+    </ul>
+  </main>
+  <Nav />
+  <script>
+    import "../scripts/menu.ts";
+  </script>
+</Layout>
+
+<style>
+  body {
+    height: 100vh;
+    margin: 0;
+  }
+  main {
+    margin: auto;
+    position: relative;
+    padding: 1.5rem;
+    max-width: 80ch;
+  }
+  main .intro {
+    font-size: 3rem;
+    font-weight: normal;
+    margin: 0;
+    padding-bottom: 2rem;
+  }
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0;
+  }
+  .socials a {
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+  }
+  .socials a:not(:last-child) {
+    padding-right: 1rem;
+  }
+</style>

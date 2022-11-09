@@ -1,32 +1,31 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Nav from "../components/Nav.astro";
+import { Icon } from "astro-icon";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Adrian S. Haynes">
   <main>
     <p class="intro">
       <span class="greeting">Hi!</span>
       <br /><br />
       My name is <span class="name">Adrian Sebastian Haynes</span>. I am a
-      <span class="interest">web developer</span>,
-      <span class="interest">musician</span>, and
-      <span class="interest">horror movie fanatic</span>.
+      <a href="/web" class="interest">web developer</a>,
+      <a href="/music" class="interest">musician</a>, and
+      <a href="/movies" class="interest">horror movie fanatic</a>.
     </p>
-  </main>
-  <nav class="">
-    <div class="menu">
-      <ul>
-        <li><a href="#">Web</a></li>
-        <li><a href="#">Music</a></li>
-        <li><a href="#">Movies</a></li>
-      </ul>
+    <div class="socials">
+      <a href="https://github.com/ashpoz" target="_blank"
+        ><Icon name="akar-icons:github-fill" />
+      </a>
+      <a href="https://www.linkedin.com/in/adrianshaynes/" target="_blank"
+        ><Icon name="akar-icons:linkedin-fill" />
+      </a>
     </div>
-    <button class="open">Menu</button>
-    <button class="close">X</button>
-  </nav>
+  </main>
+  <Nav />
   <script>
-    import "../scripts/menu.js";
+    import "../scripts/menu.ts";
   </script>
 </Layout>
 
@@ -45,6 +44,7 @@ import Card from "../components/Card.astro";
     font-size: 3rem;
     font-weight: normal;
     margin: 0;
+    padding-bottom: 2rem;
   }
   .greeting {
     font-size: 3.5rem;
@@ -53,6 +53,14 @@ import Card from "../components/Card.astro";
   .name,
   .interest {
     font-weight: bolder;
+  }
+  .socials a {
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+  }
+  .socials a:not(:last-child) {
+    padding-right: 1rem;
   }
   nav .menu {
     align-items: center;

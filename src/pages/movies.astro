@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+---
+
+<Layout title="Movies">
+  <main>
+    <h1>Movies</h1>
+    <h2>Latest Reviews</h2>
+    <div>[LETTER BOX API DATA HERE]</div>
+    <hr />
+    <h2>Favorite Movies</h2>
+    <div>[LETTER BOX API DATA HERE]</div>
+    <hr />
+    <div class="socials">
+      <h2>Follow me!</h2>
+      <a
+        class="letterbox-icon"
+        href="https://github.com/ashpoz"
+        target="_blank"
+      >
+      </a>
+    </div>
+  </main>
+  <Nav />
+  <script>
+    import "../scripts/menu.ts";
+  </script>
+</Layout>
+
+<style>
+  body {
+    height: 100vh;
+    margin: 0;
+  }
+  main {
+    margin: auto;
+    position: relative;
+    padding: 1.5rem;
+    max-width: 80ch;
+  }
+  main .intro {
+    font-size: 3rem;
+    font-weight: normal;
+    margin: 0;
+    padding-bottom: 2rem;
+  }
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0;
+  }
+  .socials a {
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+  }
+  .socials a:not(:last-child) {
+    padding-right: 1rem;
+  }
+  .letterbox-icon {
+    background-image: url("./public/images/letterbox-icon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+</style>
