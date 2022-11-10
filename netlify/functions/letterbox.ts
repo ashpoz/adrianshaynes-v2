@@ -1,25 +1,42 @@
 import type { Handler } from "@netlify/functions";
-
-var axios = require("axios");
+const axios = require("axios");
+const xml2js = require("xml2js");
 
 const handler: Handler = async (event, context) => {
-  var config = {
+  const config = {
     method: "get",
     url: "https://letterboxd.com/ashpoz/rss/",
-    headers: {
-      Cookie: "com.xk72.webparts.csrf=678f117b46563559b420",
-    },
   };
 
-  axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
+  const data = axios(config)
+    .then(function (response: { data: XMLDocument }) {
+      return response.data;
     })
-    .catch(function (error) {
-      console.log(error);
+    .catch(function (error: Error) {
+      return error;
     });
 
-  return event;
+  const json = xml2js.parseString(data, (err, result) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log(data);
+
+    // `result` is a JavaScript object
+    // convert it to a JSON string
+    const json = JSON.stringify(result, null, 4);
+
+    // log JSON string
+    console.log(json);
+  });
+
+  console.log(await json);
+
+  return {
+    statusCode: 200,
+    body: await data,
+  };
 };
 
 export { handler };
