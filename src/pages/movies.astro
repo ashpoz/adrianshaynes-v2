@@ -2,37 +2,46 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 
-const response = await fetch(
-  "http://localhost:8888/.netlify/functions/letterbox"
-);
-const data = await response;
-const xml = await data.rss;
+const letterboxRssFeed = `http://localhost:8888/api/letterbox`;
+const response = await fetch(letterboxRssFeed);
+const data = await response.json();
+const rssItems = data.rss.channel[0].item;
 ---
 
 <Layout title="Movies">
   <main>
-    <span>{xml.title}</span>
     <h1>Movies</h1>
     <h2>Latest Reviews</h2>
-    <div>[LETTER BOX API DATA HERE]</div>
+    <ul class="reviews">
+      {
+        rssItems.map((item: any, index: Number) => {
+          return (
+            index <= 9 &&
+            !item.description.toString().includes("Watched on") && (
+              <li>
+                <a href={item.link}>{item.title}</a>
+                <div set:html={item.description} />
+              </li>
+            )
+          );
+        })
+      }
+    </ul>
     <hr />
     <h2>Favorite Movies</h2>
-    <div>[LETTER BOX API DATA HERE]</div>
+    <div>Fav movies here maybe?</div>
     <hr />
     <div class="socials">
       <h2>Follow me!</h2>
       <a
         class="letterbox-icon"
-        href="https://github.com/ashpoz"
+        href="https://letterboxd.com/ashpoz/"
         target="_blank"
       >
       </a>
     </div>
   </main>
   <Nav />
-  <script>
-    import "../scripts/letterboxFeed.ts";
-  </script>
 </Layout>
 
 <style>
@@ -52,11 +61,15 @@ const xml = await data.rss;
     margin: 0;
     padding-bottom: 2rem;
   }
-  .projects {
+  .reviews {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    padding: 0;
+  }
+  .reviews li {
+    max-width: 300px;
+  }
+  .reviews img {
+    width: 100%;
   }
   .socials a {
     display: inline-flex;

@@ -1,9 +1,7 @@
 export {};
 
-const letterboxRssFeed = `http://localhost:8888/.netlify/functions/letterbox`;
-const data = await fetch(letterboxRssFeed);
-const response = await data.text();
-const xml = new window.DOMParser().parseFromString(response, "text/xml");
-const items = xml.querySelectorAll("item");
+const letterboxRssFeed = `http://localhost:8888/api/letterbox`;
+const response = await fetch(letterboxRssFeed);
+const data = await response.json();
 
-console.log(items);
+console.log(data);
