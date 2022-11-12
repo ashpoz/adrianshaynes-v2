@@ -1,10 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
+
+const response = await fetch(
+  "http://localhost:8888/.netlify/functions/letterbox"
+);
+const data = await response;
+const xml = await data.rss;
 ---
 
 <Layout title="Movies">
   <main>
+    <span>{xml.title}</span>
     <h1>Movies</h1>
     <h2>Latest Reviews</h2>
     <div>[LETTER BOX API DATA HERE]</div>

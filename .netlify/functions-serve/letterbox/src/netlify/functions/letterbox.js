@@ -18824,23 +18824,22 @@ var handler = async (event, context) => {
     method: "get",
     url: "https://letterboxd.com/ashpoz/rss/"
   };
-  const data = axios(config).then(function(response) {
+  const data = await axios(config).then(function(response) {
     return response.data;
   }).catch(function(error) {
     return error;
   });
-  const json = xml2js.parseString(data, (err, result) => {
+  let json = {};
+  xml2js.parseString(data, function(err, result) {
     if (err) {
-      throw err;
+      throw Error;
     }
-    console.log(data);
-    const json2 = JSON.stringify(result, null, 4);
-    console.log(json2);
+    json = result;
   });
-  console.log(await json);
+  json = JSON.stringify(json, null, 4);
   return {
     statusCode: 200,
-    body: await data
+    body: json
   };
 };
 // Annotate the CommonJS export names for ESM import in node:
