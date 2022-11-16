@@ -6,6 +6,23 @@ const letterboxRssFeed = `http://localhost:8888/api/letterbox`;
 const response = await fetch(letterboxRssFeed);
 const data = await response.json();
 const rssItems = data.rss.channel[0].item;
+
+const formatDate = (date: Date) => {
+  const options: Object = {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+  return new Date(date).toLocaleDateString("en-US", options);
+};
+
+const removeSpoilerReview = (str: String) => {
+  let arr: any = str.toString().match(/<p>(.*?)<\/p>/gm);
+  arr = arr.slice(0, arr.length - 1);
+
+  return arr.join("");
+};
 ---
 
 <Layout title="Movies">
@@ -14,22 +31,49 @@ const rssItems = data.rss.channel[0].item;
     <h2>Latest Reviews</h2>
     <ul class="reviews">
       {
-        rssItems.map((item: any, index: Number) => {
-          return (
-            index <= 9 &&
-            !item.description.toString().includes("Watched on") && (
-              <li>
-                <a href={item.link}>{item.title}</a>
-                <div set:html={item.description} />
-              </li>
-            )
-          );
-        })
+        rssItems
+          .filter((item: any) => {
+            return !item.description.toString().includes("Watched on");
+          })
+          .map((item: any, index: Number) => {
+            return (
+              index <= 9 && (
+                <li class="link-card review">
+                  <a class="review__link" href={item.link}>
+                    <h2>
+                      {item["letterboxd:filmTitle"]} <span>🔗</span>
+                    </h2>
+                    <div>
+                      <span class="review__stars">
+                        {Array.from(
+                          Array(Number(item["letterboxd:memberRating"])),
+                          (_) => {
+                            return "⭐️";
+                          }
+                        )}
+                      </span>
+                      <span class="review__date">
+                        Added {formatDate(item.pubDate)}
+                      </span>
+                    </div>
+                    {item.description.toString().includes("spoilers") ? (
+                      <div
+                        class="review__description"
+                        set:html={removeSpoilerReview(item.description)}
+                      />
+                    ) : (
+                      <div
+                        class="review__description"
+                        set:html={item.description}
+                      />
+                    )}
+                  </a>
+                </li>
+              )
+            );
+          })
       }
     </ul>
-    <hr />
-    <h2>Favorite Movies</h2>
-    <div>Fav movies here maybe?</div>
     <hr />
     <div class="socials">
       <h2>Follow me!</h2>
@@ -44,32 +88,69 @@ const rssItems = data.rss.channel[0].item;
   <Nav />
 </Layout>
 
-<style>
-  body {
-    height: 100vh;
-    margin: 0;
-  }
-  main {
-    margin: auto;
-    position: relative;
-    padding: 1.5rem;
-    max-width: 80ch;
-  }
+<style is:global>
   main .intro {
     font-size: 3rem;
     font-weight: normal;
     margin: 0;
     padding-bottom: 2rem;
   }
+  .link-card {
+    background-color: white;
+    background-image: var(--accent-gradient);
+    background-size: 400%;
+    border-radius: 0.5rem;
+    background-position: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex: 1 0 25%;
+    list-style: none;
+    max-width: 400px;
+    min-width: 20rem;
+    padding: 0.15rem;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-card > a {
+    width: 100%;
+    text-decoration: none;
+    line-height: 1.4;
+    padding: 1rem 1.3rem;
+    border-radius: 0.35rem;
+    color: #111;
+    background-color: white;
+    opacity: 0.8;
+  }
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  p {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    color: #444;
+  }
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+  }
+  .link-card:is(:hover, :focus-within) h2 {
+    color: rgb(var(--accent));
+  }
   .reviews {
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0;
   }
-  .reviews li {
-    max-width: 300px;
-  }
-  .reviews img {
+  .review img {
     width: 100%;
+  }
+  .review__date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.8;
   }
   .socials a {
     display: inline-flex;
@@ -84,5 +165,10 @@ const rssItems = data.rss.channel[0].item;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+  }
+  @media (max-width: 1100px) {
+    .reviews {
+      justify-content: center;
+    }
   }
 </style>

@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Card from "../components/Card.astro";
+import { Icon } from "astro-icon";
 ---
 
 <Layout title="Music">
@@ -25,6 +26,15 @@ import Card from "../components/Card.astro";
         body="This was one of the more recent songs I wrote for Major Major Major, a band I started and have been playing with on and off since 2008. "
       />
     </ul>
+    <div class="socials">
+      <h2>Follow me!</h2>
+      <a href="https://tidal.com/browse/user/32800331" target="_blank"
+        ><Icon name="cib:tidal" />
+      </a>
+      <a href="https://open.spotify.com/user/128734211" target="_blank"
+        ><Icon name="cib:spotify" />
+      </a>
+    </div>
   </main>
   <Nav />
   <script>
@@ -33,16 +43,6 @@ import Card from "../components/Card.astro";
 </Layout>
 
 <style>
-  body {
-    height: 100vh;
-    margin: 0;
-  }
-  main {
-    margin: auto;
-    position: relative;
-    padding: 1.5rem;
-    max-width: 80ch;
-  }
   main .intro {
     font-size: 3rem;
     font-weight: normal;
