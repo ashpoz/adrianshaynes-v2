@@ -24,9 +24,9 @@
   }
 </style>
 
-<script>
-  const toggleId: String = "theme-toggle";
-  const toggle: HTMLElement = document.querySelector(`#${toggleId}`)!;
+<script is:inline>
+  const toggleId = "theme-toggle";
+  const toggle = document.querySelector(`#${toggleId}`);
 
   const storedTheme =
     localStorage.getItem("theme") ||
@@ -42,12 +42,12 @@
 
     if (currentTheme === "light") {
       targetTheme = "dark";
-      document.querySelector(`.${toggleId}__dark`)!.classList.remove("active");
-      document.querySelector(`.${toggleId}__light`)!.classList.add("active");
+      document.querySelector(`.${toggleId}__dark`).classList.remove("active");
+      document.querySelector(`.${toggleId}__light`).classList.add("active");
     } else {
       targetTheme = "light";
-      document.querySelector(`.${toggleId}__light`)!.classList.remove("active");
-      document.querySelector(`.${toggleId}__dark`)!.classList.add("active");
+      document.querySelector(`.${toggleId}__light`).classList.remove("active");
+      document.querySelector(`.${toggleId}__dark`).classList.add("active");
     }
 
     document.documentElement.setAttribute("data-theme", targetTheme);
