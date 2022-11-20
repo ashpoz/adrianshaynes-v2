@@ -3,13 +3,24 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Card from "../components/Card.astro";
 import { Icon } from "astro-icon";
+import Socials from "../components/Socials.astro";
+import Header from "../components/Header.astro";
+import Cards from "../components/Cards.astro";
 ---
 
 <Layout title="Music">
   <main>
-    <h1>Music</h1>
-    <h2>Projects</h2>
-    <ul class="projects">
+    <Header title="Music">
+      <Socials>
+        <a href="https://tidal.com/browse/user/32800331" target="_blank"
+          ><Icon name="cib:tidal" />
+        </a>
+        <a href="https://open.spotify.com/user/128734211" target="_blank"
+          ><Icon name="cib:spotify" />
+        </a>
+      </Socials>
+    </Header>
+    <Cards title="Projects">
       <Card
         href="https://www.youtube.com/watch?v=hrT-ITNT7rg"
         title="Alex Napping at Audiotree"
@@ -25,42 +36,6 @@ import { Icon } from "astro-icon";
         title="Major Major Major - Apocalpyse Now & Then"
         body="This was one of the more recent songs I wrote for Major Major Major, a band I started and have been playing with on and off since 2008. "
       />
-    </ul>
-    <div class="socials">
-      <h2>Follow me!</h2>
-      <a href="https://tidal.com/browse/user/32800331" target="_blank"
-        ><Icon name="cib:tidal" />
-      </a>
-      <a href="https://open.spotify.com/user/128734211" target="_blank"
-        ><Icon name="cib:spotify" />
-      </a>
-    </div>
+    </Cards>
   </main>
-  <Nav />
-  <script>
-    import "../scripts/menu.ts";
-  </script>
 </Layout>
-
-<style>
-  main .intro {
-    font-size: 3rem;
-    font-weight: normal;
-    margin: 0;
-    padding-bottom: 2rem;
-  }
-  .projects {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 0;
-  }
-  .socials a {
-    display: inline-flex;
-    height: 3rem;
-    width: 3rem;
-  }
-  .socials a:not(:last-child) {
-    padding-right: 1rem;
-  }
-</style>

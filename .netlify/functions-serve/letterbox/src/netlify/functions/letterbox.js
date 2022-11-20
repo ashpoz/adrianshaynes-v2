@@ -1,13 +1,23 @@
 var __defProp = Object.defineProperty;
-var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __commonJS = (cb, mod) => function __require() {
-  return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __export = (target, all) => {
-  __markAsModule(target);
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // node_modules/delayed-stream/lib/delayed_stream.js
 var require_delayed_stream = __commonJS({
@@ -8815,9 +8825,9 @@ var require_mime_types = __commonJS({
     exports.charsets = { lookup: charset };
     exports.contentType = contentType;
     exports.extension = extension;
-    exports.extensions = Object.create(null);
+    exports.extensions = /* @__PURE__ */ Object.create(null);
     exports.lookup = lookup;
-    exports.types = Object.create(null);
+    exports.types = /* @__PURE__ */ Object.create(null);
     populateMaps(exports.extensions, exports.types);
     function charset(type) {
       if (!type || typeof type !== "string") {
@@ -10171,10 +10181,10 @@ var require_node = __commonJS({
       const { namespace: name, useColors: useColors2 } = this;
       if (useColors2) {
         const c = this.color;
-        const colorCode = "[3" + (c < 8 ? c : "8;5;" + c);
-        const prefix = `  ${colorCode};1m${name} [0m`;
+        const colorCode = "\x1B[3" + (c < 8 ? c : "8;5;" + c);
+        const prefix = `  ${colorCode};1m${name} \x1B[0m`;
         args[0] = prefix + args[0].split("\n").join("\n" + prefix);
-        args.push(colorCode + "m+" + module2.exports.humanize(this.diff) + "[0m");
+        args.push(colorCode + "m+" + module2.exports.humanize(this.diff) + "\x1B[0m");
       } else {
         args[0] = getDate() + name + " " + args[0];
       }
@@ -10260,7 +10270,7 @@ var require_follow_redirects = __commonJS({
     var assert = require("assert");
     var debug = require_debug();
     var events = ["abort", "aborted", "connect", "error", "socket", "timeout"];
-    var eventHandlers = Object.create(null);
+    var eventHandlers = /* @__PURE__ */ Object.create(null);
     events.forEach(function(event) {
       eventHandlers[event] = function(arg1, arg2, arg3) {
         this._redirectable.emit(event, arg1, arg2, arg3);
@@ -10704,7 +10714,7 @@ var require_axios = __commonJS({
     var kindOf = ((cache) => (thing) => {
       const str = toString.call(thing);
       return cache[str] || (cache[str] = str.slice(8, -1).toLowerCase());
-    })(Object.create(null));
+    })(/* @__PURE__ */ Object.create(null));
     var kindOfTest = (type) => {
       type = type.toLowerCase();
       return (thing) => kindOf(thing) === type;
@@ -11418,7 +11428,7 @@ var require_axios = __commonJS({
       return utils.isArray(value) ? value.map(normalizeValue) : String(value);
     }
     function parseTokens(str) {
-      const tokens = Object.create(null);
+      const tokens = /* @__PURE__ */ Object.create(null);
       const tokensRE = /([^\s,;=]+)\s*(?:=\s*([^,;]+))?/g;
       let match;
       while (match = tokensRE.exec(str)) {
@@ -11568,7 +11578,7 @@ var require_axios = __commonJS({
         return this;
       },
       toJSON: function(asStrings) {
-        const obj = Object.create(null);
+        const obj = /* @__PURE__ */ Object.create(null);
         utils.forEach(Object.assign({}, this[$defaults] || null, this), (value, header) => {
           if (value == null || value === false)
             return;
@@ -18814,9 +18824,11 @@ var require_xml2js = __commonJS({
 });
 
 // netlify/functions/letterbox.ts
-__export(exports, {
+var letterbox_exports = {};
+__export(letterbox_exports, {
   handler: () => handler
 });
+module.exports = __toCommonJS(letterbox_exports);
 var axios = require_axios();
 var xml2js = require_xml2js();
 var handler = async (event, context) => {

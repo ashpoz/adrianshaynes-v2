@@ -1,0 +1,61 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<button id="theme-toggle" type="button">
+  <span class="theme-toggle__light active"
+    ><Icon name="ic:round-light-mode" />
+  </span>
+  <span class="theme-toggle__dark"><Icon name="ic:round-dark-mode" /></span>
+</button>
+
+<style is:global>
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: clamp(3rem, 4vw + 2rem, 5rem);
+    line-height: 1;
+    position: absolute;
+    right: 0;
+    width: 3rem;
+    z-index: 1;
+  }
+  button span {
+    display: none;
+  }
+  button span.active {
+    display: block;
+  }
+</style>
+
+<script>
+  const toggleId: String = "theme-toggle";
+  const toggle: HTMLElement = document.querySelector(`#${toggleId}`)!;
+
+  const storedTheme =
+    localStorage.getItem("theme") ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+  if (storedTheme)
+    document.documentElement.setAttribute("data-theme", storedTheme);
+
+  toggle.addEventListener("click", () => {
+    let currentTheme = document.documentElement.getAttribute("data-theme");
+    let targetTheme = "light";
+
+    if (currentTheme === "light") {
+      targetTheme = "dark";
+      document.querySelector(`.${toggleId}__dark`)!.classList.remove("active");
+      document.querySelector(`.${toggleId}__light`)!.classList.add("active");
+    } else {
+      targetTheme = "light";
+      document.querySelector(`.${toggleId}__light`)!.classList.remove("active");
+      document.querySelector(`.${toggleId}__dark`)!.classList.add("active");
+    }
+
+    document.documentElement.setAttribute("data-theme", targetTheme);
+    localStorage.setItem("theme", targetTheme);
+  });
+</script>

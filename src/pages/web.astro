@@ -3,13 +3,30 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Card from "../components/Card.astro";
 import { Icon } from "astro-icon";
+import Socials from "../components/Socials.astro";
+import Header from "../components/Header.astro";
+import Cards from "../components/Cards.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <h1>Web</h1>
-    <h2>Projects</h2>
-    <ul class="projects">
+    <Header title="Web">
+      <Socials>
+        <a href="https://github.com/ashpoz" target="_blank"
+          ><Icon name="akar-icons:github-fill" />
+        </a>
+        <a href="https://www.linkedin.com/in/adrianshaynes/" target="_blank"
+          ><Icon name="akar-icons:linkedin-fill" />
+        </a>
+        <a href="https://codepen.io/ashpoz" target="_blank"
+          ><Icon name="akar-icons:codepen-fill" />
+        </a>
+        <a href="https://codesandbox.io/u/hellomaryjo" target="_blank"
+          ><Icon name="cib:codesandbox" />
+        </a>
+      </Socials>
+    </Header>
+    <Cards title="Projects">
       <Card
         href="https://github.com/ashpoz/spotify-playlist-generator-server"
         title="Spotify Playlist by Genre App "
@@ -20,28 +37,8 @@ import { Icon } from "astro-icon";
         title="Landing Page Generator "
         body="This is simple, no-code landing page generator that allows a user to select a template, and fill out it's contents via form fields, then outputs the HTML and CSS code necessary. Built w/ React."
       />
-    </ul>
-    <hr />
-    <div class="socials">
-      <h2>Follow me!</h2>
-      <a href="https://github.com/ashpoz" target="_blank"
-        ><Icon name="akar-icons:github-fill" />
-      </a>
-      <a href="https://www.linkedin.com/in/adrianshaynes/" target="_blank"
-        ><Icon name="akar-icons:linkedin-fill" />
-      </a>
-      <a href="https://codepen.io/ashpoz" target="_blank"
-        ><Icon name="akar-icons:codepen-fill" />
-      </a>
-      <a href="https://codesandbox.io/u/hellomaryjo" target="_blank"
-        ><Icon name="cib:codesandbox" />
-      </a>
-    </div>
+    </Cards>
   </main>
-  <Nav />
-  <script>
-    import "../scripts/menu.ts";
-  </script>
 </Layout>
 
 <style>
@@ -56,13 +53,5 @@ import { Icon } from "astro-icon";
     flex-wrap: wrap;
     gap: 1rem;
     padding: 0;
-  }
-  .socials a {
-    display: inline-flex;
-    height: 2rem;
-    width: 2rem;
-  }
-  .socials a:not(:last-child) {
-    padding-right: 1rem;
   }
 </style>

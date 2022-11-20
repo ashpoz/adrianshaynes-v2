@@ -10,92 +10,27 @@ import { Icon } from "astro-icon";
       <span class="greeting">Hi!</span>
       <br /><br />
       My name is <span class="name">Adrian Sebastian Haynes</span>. I am a
-      <a href="/web" class="interest">web developer</a>,
-      <a href="/music" class="interest">musician</a>, and
-      <a href="/movies" class="interest">horror movie fanatic</a>.
+      <a href="/web" class="interest">web developer 🧑‍💻</a>,
+      <a href="/music" class="interest">musician 🎸</a>, and
+      <a href="/movies" class="interest">horror movie fanatic 👻</a>.
     </p>
-    <div class="socials">
-      <a href="https://github.com/ashpoz" target="_blank"
-        ><Icon name="akar-icons:github-fill" />
-      </a>
-      <a href="https://www.linkedin.com/in/adrianshaynes/" target="_blank"
-        ><Icon name="akar-icons:linkedin-fill" />
-      </a>
-    </div>
   </main>
-  <Nav />
-  <script>
-    import "../scripts/menu.ts";
-  </script>
 </Layout>
 
 <style>
   main .intro {
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 3vw + 1rem, 4rem);
     font-weight: normal;
-    margin: 0;
-    padding-bottom: 2rem;
+    margin: auto;
+    max-width: 90rem;
+    padding: 4rem 0;
   }
   .greeting {
-    font-size: 3.5rem;
+    font-size: clamp(1.5rem, 4vw + 1rem, 4.5rem);
   }
   .greeting,
   .name,
   .interest {
     font-weight: bolder;
-  }
-  .socials a {
-    display: inline-flex;
-    height: 3rem;
-    width: 3rem;
-  }
-  .socials a:not(:last-child) {
-    padding-right: 1rem;
-  }
-  nav .menu {
-    align-items: center;
-    background: #ddd;
-    display: none;
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-  nav .open {
-    display: block;
-  }
-  nav .close {
-    display: none;
-  }
-  nav.active .menu {
-    display: flex;
-  }
-  nav.active .open {
-    display: none;
-  }
-  nav.active .close {
-    display: block;
-  }
-  .menu ul {
-    font-size: 3rem;
-    list-style: none;
-  }
-  .menu li {
-    padding: 1rem 0;
-  }
-  nav button {
-    border: 2px solid #000;
-    border-radius: 50%;
-    bottom: 2rem;
-    background: #ddd;
-    cursor: pointer;
-    font-size: 1.5rem;
-    font-weight: bold;
-    height: 6rem;
-    position: absolute;
-    right: 2rem;
-    text-transform: uppercase;
-    width: 6rem;
   }
 </style>

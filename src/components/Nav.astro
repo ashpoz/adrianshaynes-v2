@@ -11,18 +11,29 @@
   <button class="close">&#10005;</button>
 </nav>
 <script>
-  import "../scripts/menu.ts";
+  const nav = document.querySelector("nav") as HTMLElement;
+  const navButtons = nav.querySelectorAll(
+    "button"
+  ) as NodeListOf<HTMLButtonElement>;
+
+  navButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  });
 </script>
-<style>
+<style is:global>
   nav .menu {
     align-items: center;
     background: #ddd;
     display: none;
+    font-weight: bold;
     height: 100%;
     left: 0;
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1;
   }
   nav .open {
     display: block;
@@ -40,7 +51,7 @@
     display: block;
   }
   .menu ul {
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 3vw + 1.25rem, 4rem);
     list-style: none;
   }
   .menu li {

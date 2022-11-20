@@ -1,0 +1,23 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<header>
+  <h1>{title}</h1>
+  <slot />
+</header>
+
+<style is:global>
+  header {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    flex: 1;
+    font-size: 4rem;
+  }
+</style>

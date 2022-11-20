@@ -1,0 +1,21 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<h2>{title}</h2>
+<ul class="cards">
+  <slot />
+</ul>
+
+<style is:global>
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0;
+  }
+</style>

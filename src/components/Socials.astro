@@ -1,0 +1,17 @@
+<div class="socials">
+  <h2>Follow me!</h2>
+  <slot />
+</div>
+<style is:global>
+  .socials {
+    padding: 1rem 4rem;
+  }
+  .socials a {
+    display: inline-flex;
+    height: 2rem;
+    width: 2rem;
+  }
+  .socials a:not(:last-child) {
+    padding-right: 1rem;
+  }
+</style>
