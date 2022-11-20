@@ -31,7 +31,7 @@ const removeSpoilerReview = (str: String) => {
       .map((item: any, index: Number) => {
         return (
           index <= 9 && (
-            <li class="review">
+            <li class="link-card review">
               <a class="review__link" href={item.link}>
                 <h2>
                   {item["letterboxd:filmTitle"]} <span>🔗</span>
@@ -71,10 +71,6 @@ const removeSpoilerReview = (str: String) => {
 <style is:global>
   .review {
     background-color: white;
-    background-image: var(--accent-gradient);
-    background-size: 400%;
-    border-radius: 0.5rem;
-    background-position: 100%;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -2px rgba(0, 0, 0, 0.1);
     display: flex;

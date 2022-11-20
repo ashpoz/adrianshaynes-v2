@@ -24,16 +24,16 @@ const { title } = Astro.props;
     <slot />
     <style is:global>
       :root {
-        --accent: 124, 58, 237;
+        --accent: 104, 109, 224;
         --accent-gradient: linear-gradient(
           45deg,
           rgb(var(--accent)),
-          #da62c4 30%,
+          #4834d4 30%,
           white 60%
         );
       }
       html[data-theme="light"] {
-        --background-color: #fff;
+        --background-color: #ecf0f1;
         --text-color: #121416d8;
         --link-color: #543fd7;
       }
@@ -65,7 +65,7 @@ const { title } = Astro.props;
       a {
         color: var(--link-color);
       }
-      a:hover {
+      li:not(.link-card, .review) a:hover {
         text-decoration: underline;
         filter: brightness(80%);
       }
