@@ -3,21 +3,20 @@ import { Icon } from "astro-icon";
 ---
 
 <button id="theme-toggle" type="button">
-  <span class="theme-toggle__light active"
-    ><Icon name="ic:round-light-mode" />
-  </span>
-  <span class="theme-toggle__dark"><Icon name="ic:round-dark-mode" /></span>
+  <span class="theme-toggle__light active">🌞</span>
+  <span class="theme-toggle__dark">🌛</span>
 </button>
 
-<style is:global>
+<style>
   button {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: clamp(3rem, 4vw + 2rem, 5rem);
+    font-size: clamp(2.5rem, 3vw + 1rem, 3rem);
     line-height: 1;
     position: absolute;
-    right: 0;
+    right: 2rem;
+    top: 1rem;
     width: 3rem;
     z-index: 1;
   }
