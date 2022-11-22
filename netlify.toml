@@ -1,3 +1,7 @@
+ [build]
+  command = "npm run build"
+  functions="netlify/functions"
+
 [[redirects]]
   from = "/api/*" # simplify all calls to serverless functions
   to = "/.netlify/functions/:splat" # all function calls will go to this path
