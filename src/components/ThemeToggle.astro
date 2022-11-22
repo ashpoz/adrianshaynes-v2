@@ -1,7 +1,4 @@
-<button id="theme-toggle" type="button">
-  <span class="theme-toggle__light active">🌞</span>
-  <span class="theme-toggle__dark">🌛</span>
-</button>
+<button id="theme-toggle" type="button">test</button>
 
 <style>
   button {
@@ -33,24 +30,23 @@
     (window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light");
-  if (storedTheme)
-    document.documentElement.setAttribute("data-theme", storedTheme);
+
+  const updateTheme = (theme) => {
+    theme === "light"
+      ? (toggle.textContent = "🌛")
+      : (toggle.textContent = "🌞");
+
+    document.documentElement.setAttribute("data-theme", theme);
+  };
+
+  updateTheme(storedTheme);
 
   toggle.addEventListener("click", () => {
     let currentTheme = document.documentElement.getAttribute("data-theme");
-    let targetTheme = "light";
+    currentTheme = currentTheme === "light" ? "dark" : "light";
 
-    if (currentTheme === "light") {
-      targetTheme = "dark";
-      document.querySelector(`.${toggleId}__dark`).classList.remove("active");
-      document.querySelector(`.${toggleId}__light`).classList.add("active");
-    } else {
-      targetTheme = "light";
-      document.querySelector(`.${toggleId}__light`).classList.remove("active");
-      document.querySelector(`.${toggleId}__dark`).classList.add("active");
-    }
-
-    document.documentElement.setAttribute("data-theme", targetTheme);
-    localStorage.setItem("theme", targetTheme);
+    updateTheme(currentTheme);
+    document.documentElement.setAttribute("data-theme", currentTheme);
+    localStorage.setItem("theme", currentTheme);
   });
 </script>
