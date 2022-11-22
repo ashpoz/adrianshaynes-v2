@@ -1,5 +1,5 @@
 ---
-const letterboxRssFeed = `https://adrianshaynes.netlify.app/api/letterbox`;
+const letterboxRssFeed = `${Astro.url.origin}/api/letterbox`;
 const response = await fetch(letterboxRssFeed);
 const data = await response.json();
 const rssItems = data.rss.channel[0].item;
