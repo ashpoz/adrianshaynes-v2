@@ -3,8 +3,14 @@
   <slot />
 </div>
 <style is:global>
+  .letterbox-icon {
+    background-image: url("./images/letterbox-icon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
   .socials {
-    padding: 1rem 4rem;
+    padding: 1rem 0rem;
   }
   .socials a {
     display: inline-flex;
@@ -13,5 +19,10 @@
   }
   .socials a:not(:last-child) {
     padding-right: 1rem;
+  }
+  @media (min-width: 768px) {
+    .socials {
+      padding: 1rem 4rem;
+    }
   }
 </style>
