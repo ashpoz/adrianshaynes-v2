@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Socials from "../components/Socials.astro";
 import Reviews from "../components/Reviews.astro";
+import LetterBoxIconImage from "../images/letterbox-icon.svg";
 ---
 
 <Layout title="Movies">
@@ -10,6 +11,7 @@ import Reviews from "../components/Reviews.astro";
     <Header title="Movies">
       <Socials>
         <a
+          style={`background-image: url(${LetterBoxIconImage})`}
           class="letterbox-icon"
           href="https://letterboxd.com/ashpoz/"
           target="_blank"
