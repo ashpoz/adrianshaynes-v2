@@ -28,9 +28,9 @@ const removeSpoilerReview = (str: String) => {
       .filter((item: any) => {
         return !item.description.toString().includes("Watched on");
       })
-      .map((item: any, index: Number) => {
+      .map((item: any, index: number) => {
         return (
-          index <= 9 && (
+          index < 10 && (
             <li class="link-card review">
               <a class="review__link" href={item.link}>
                 <h2>
