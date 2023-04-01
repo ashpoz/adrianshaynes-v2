@@ -16,7 +16,8 @@ const formatDate = (date: Date) => {
 
 const removeSpoilerReview = (str: String) => {
   let arr: any = str.toString().match(/<p>(.*?)<\/p>/gm);
-  arr = arr.slice(0, arr.length - 1);
+  // 1st <p> is movie poster, 2nd <p> is spoiler note
+  arr = arr.slice(0, 2);
 
   return arr.join("");
 };
