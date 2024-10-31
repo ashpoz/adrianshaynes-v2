@@ -8,7 +8,7 @@ import Header from "../components/Header.astro";
 import Cards from "../components/Cards.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Adrian S. Haynes">
   <main>
     <Header title="Web">
       <Socials>
@@ -27,6 +27,11 @@ import Cards from "../components/Cards.astro";
       </Socials>
     </Header>
     <Cards title="Projects">
+      <Card
+        href="https://movie-mashup.netlify.app/"
+        title="Movie Mashup - A movie / word play trivia game!"
+        body={`2 movies, 1 very bizarre plot. The goal is to guess a combined movie title. Built with Vue, database built with Supabase, and hosted on Netlify.`}
+      />
       <Card
         href="https://github.com/ashpoz/movie-quotes-api"
         title="Movie Quotes API"
