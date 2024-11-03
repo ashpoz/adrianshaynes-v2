@@ -1,0 +1,22 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import Cards from "../components/Cards.astro";
+import Card from "../components/Card.astro";
+
+const posts = await Astro.glob('./posts/*.md');
+---
+<PageLayout title="Adrian's Blog">
+  <main>
+    <h2>All Posts</h2>
+      <Cards title="">
+        {posts.map((post) => (
+          <Card
+            href={post.url}
+            title={post.frontmatter.title}
+          >
+          </Card>
+          )
+        )}
+      </Cards>
+  </main>
+</PageLayout>

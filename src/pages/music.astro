@@ -1,6 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
+import PageLayout from "../layouts/PageLayout.astro";
 import Card from "../components/Card.astro";
 import { Icon } from "astro-icon";
 import Socials from "../components/Socials.astro";
@@ -8,7 +7,7 @@ import Header from "../components/Header.astro";
 import Cards from "../components/Cards.astro";
 ---
 
-<Layout title="Music">
+<PageLayout title="Music">
   <main>
     <Header title="Music">
       <Socials>
@@ -24,18 +23,21 @@ import Cards from "../components/Cards.astro";
       <Card
         href="https://www.youtube.com/watch?v=hrT-ITNT7rg"
         title="Alex Napping at Audiotree"
-        body="Alex Napping was band from Austin TX/NYC from around 2014-2019. I played guitar, arranged and cowrote for the band."
-      />
+      >
+        Alex Napping was a band from Austin TX/NYC from around 2014-2019. I played guitar, arranged and cowrote for the band.
+      </Card>
       <Card
         href="https://open.spotify.com/album/5ThctQd8gzBrgccsiFnAe7"
         title="Dominic Sen - Visitor"
-        body="Alex (yes, from Alex Napping) started a solo project called Dominic Sen in 2019. I played guitar on this record and it was one of the most fun experiences I've had in the studio. All ideas were explored, and what ended on the record was very different than what we started with."
-      />
+      >
+        Alex (yes, from Alex Napping) started a solo project called Dominic Sen in 2019. I played guitar on this record and it was one of the most fun experiences I've had in the studio. All ideas were explored, and what ended on the record was very different than what we started with.
+      </Card>
       <Card
         href="https://open.spotify.com/album/7Gedr2Ey9EVjYlGg2G68b9"
         title="Major Major Major - Apocalpyse Now & Then"
-        body="This was one of the more recent songs I wrote for Major Major Major, a band I started and have been playing with on and off since 2008. "
-      />
+      >
+        This was one of the more recent songs I wrote for Major Major Major, a band I started and have been playing with on and off since 2008.
+      </Card>
     </Cards>
   </main>
-</Layout>
+</PageLayout>

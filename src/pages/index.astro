@@ -1,28 +1,64 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import Cards from "../components/Cards.astro";
+import Card from "../components/Card.astro";
+
+const posts = await Astro.glob('./posts/*.md');
 ---
 
-<Layout title="Adrian S. Haynes">
+<PageLayout title="Adrian S. Haynes">
   <main>
-    <p class="intro">
-      <span class="greeting">Hi!</span>
-      <br /><br />
+    <section class="intro">
+      <h2 class="sr-only">Intro</h2>
+      <br />
       My name is <span class="name">Adrian Sebastian Haynes</span>. I am a
       <a href="/web" class="interest">web developer 🧑‍💻</a>,
       <a href="/music" class="interest">musician 🎸</a>, and
       <a href="/movies" class="interest">horror movie fanatic 👻</a>.
-    </p>
+    </section>
+    <hr>
+    <section class="blog">
+      <h2 class="sr-only">Blog</h2>
+      <Cards title="Check out my latest posts!">
+        {posts.map((post) => (
+          <Card
+            href={post.url}
+            title={post.frontmatter.title}
+          >
+          </Card>
+          )
+        )}
+      </Cards>
+      <div class="latest-posts">
+        <a href="/blog">View all posts</a>
+      </div>
+    </section>
   </main>
-</Layout>
+</PageLayout>
 
 <style>
-  main .intro {
-    font-size: clamp(1.5rem, 3vw + 1rem, 4rem);
-    font-weight: normal;
-    margin: auto;
-    max-width: 90rem;
-    padding: 4rem 0;
+  main {
+    & .intro {
+      font-size: clamp(1.5rem, 3vw + 1rem, 4rem);
+      font-weight: normal;
+      margin: auto;
+      max-width: 90rem;
+      padding: 4rem 0;
+    }
+    & .blog {
+      font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem);
+      h2 {
+        font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem);
+      }
+      p {
+        font-weight: 300;
+      }
+      a {
+        font-weight: bolder;
+      }
+    }
   }
+
   .greeting {
     font-size: clamp(1.5rem, 4vw + 1rem, 4.5rem);
   }

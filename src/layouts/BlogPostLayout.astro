@@ -3,12 +3,15 @@ import ThemeToggle from "../components/ThemeToggle.astro";
 import Nav from "../components/Nav.astro";
 
 export interface Props {
-  title: string;
+  frontmatter: {
+    title: string;
+    date: string;
+  }
 }
 
-const { title } = Astro.props;
+const { frontmatter } = Astro.props;
+const { title, date } = frontmatter;
 ---
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,7 +24,18 @@ const { title } = Astro.props;
   <body>
     <ThemeToggle />
     <Nav />
-    <slot />
+    <main>
+      <!-- Add other UI components here, like common headers and footers. -->
+      <h1>{title}</h1>
+      <!-- 2. Rendered HTML will be passed into the default slot. -->
+      <slot />
+      <p>Written on: {date}</p>
+    </main>
+    <script>
+      import { initializeCodeCopyButtons } from '../lib/copyCode'
+
+      initializeCodeCopyButtons()
+    </script>
     <style is:global>
       :root {
         --accent: 104, 109, 224;
@@ -52,6 +66,7 @@ const { title } = Astro.props;
         margin: 0;
         background: var(--background-color);
         color: var(--text-color);
+        font-size: clamp(18px, 2vw + 1rem, 1.5rem);
       }
       code {
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
@@ -69,6 +84,27 @@ const { title } = Astro.props;
       li:not(.link-card, .review) a:hover {
         text-decoration: underline;
         filter: brightness(80%);
+      }
+      .sr-only {
+        position:absolute;
+        left:-10000px;
+        top:auto;
+        width:1px;
+        height:1px;
+        overflow:hidden;
+      }
+      .copy-code {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #3730a3;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        line-height: 1rem;
+      }
+
+      .copy-code:hover {
+        background-color: #312e81;
       }
     </style>
   </body>
