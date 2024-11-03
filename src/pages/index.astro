@@ -1,7 +1,7 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
 import Cards from "../components/Cards.astro";
-import Card from "../components/Card.astro";
+import BlogCard from "../components/BlogCard.astro";
 
 const posts = await Astro.glob('./posts/*.md');
 ---
@@ -21,11 +21,12 @@ const posts = await Astro.glob('./posts/*.md');
       <h2 class="sr-only">Blog</h2>
       <Cards title="Check out my latest posts!">
         {posts.map((post) => (
-          <Card
+          <BlogCard
             href={post.url}
             title={post.frontmatter.title}
-          >
-          </Card>
+            date={post.frontmatter.date}
+            caption={post.frontmatter.caption}
+          />
           )
         )}
       </Cards>
@@ -37,18 +38,22 @@ const posts = await Astro.glob('./posts/*.md');
 </PageLayout>
 
 <style>
+  section {
+    padding-block: 3rem;
+  }
   main {
     & .intro {
       font-size: clamp(1.5rem, 3vw + 1rem, 4rem);
       font-weight: normal;
       margin: auto;
       max-width: 90rem;
-      padding: 4rem 0;
+      padding-top: 4rem;
     }
     & .blog {
       font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem);
       h2 {
         font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem);
+        margin-top: 0;
       }
       p {
         font-weight: 300;

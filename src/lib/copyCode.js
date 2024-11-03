@@ -6,6 +6,9 @@
 
 // Module variables
 const COPY_BUTTON_CLASSES = 'copy-code-button'
+const COPY_BUTTON_LABEL = '📋 Copy'
+const COPY_BUTTON_LABEL_ERROR = '❌ Copy Failed'
+const COPY_BUTTON_LABEL_SUCCESS = '✅ Copied!'
 const WRAPPER_CLASSES = 'code-block-wrapper'
 const COPIED_FEEDBACK_DURATION = 1000
 
@@ -14,7 +17,7 @@ const COPIED_FEEDBACK_DURATION = 1000
  * @param {string} buttonLabel - Initial text to display on copy buttons
  * @returns {void}
  */
-export function initializeCodeCopyButtons(buttonLabel = 'Copy Code') {
+export function initializeCodeCopyButtons(buttonLabel = COPY_BUTTON_LABEL) {
 	const codeBlocks = Array.from(document.querySelectorAll('pre'))
 	attachCopyCodeButtonsToCodeBlocks(codeBlocks, buttonLabel)
 }
@@ -97,7 +100,7 @@ async function handleCopyCode(codeBlock, button, originalLabel) {
 		provideCopyFeedback(button, originalLabel)
 	} catch(error) {
 		console.error('Failed to copy code:', error)
-		button.textContent = 'Copy failed'
+		button.textContent = COPY_BUTTON_LABEL_ERROR
 	}
 }
 
@@ -108,7 +111,7 @@ async function handleCopyCode(codeBlock, button, originalLabel) {
  * @private
  */
 function provideCopyFeedback(button, originalLabel) {
-	button.textContent = 'Code Copied'
+	button.textContent = COPY_BUTTON_LABEL_SUCCESS
 	setTimeout(() => {
 			button.textContent = originalLabel
 	}, COPIED_FEEDBACK_DURATION)

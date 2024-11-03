@@ -1,5 +1,5 @@
 ---
-import ThemeToggle from "../components/ThemeToggle.astro";
+import TopBar from "../components/TopBar.astro";
 import Nav from "../components/Nav.astro";
 
 export interface Props {
@@ -22,14 +22,14 @@ const { title, date } = frontmatter;
     <title>{title}</title>
   </head>
   <body>
-    <ThemeToggle />
+    <TopBar />
     <Nav />
     <main>
-      <!-- Add other UI components here, like common headers and footers. -->
       <h1>{title}</h1>
-      <!-- 2. Rendered HTML will be passed into the default slot. -->
-      <slot />
-      <p>Written on: {date}</p>
+      <p class="post-date">{date}</p>
+      <article>
+        <slot />
+      </article>
     </main>
     <script>
       import { initializeCodeCopyButtons } from '../lib/copyCode'
@@ -40,6 +40,7 @@ const { title, date } = frontmatter;
       :root {
         --accent: 104, 109, 224;
         --accent-color: rgb(var(--accent));
+        --accent-color-2: #543fd7;
         --accent-gradient: linear-gradient(
           45deg,
           rgb(var(--accent)),
@@ -78,8 +79,17 @@ const { title, date } = frontmatter;
         position: relative;
         padding: clamp(1.5rem, 3vw + 1rem, 4rem);
       }
+      article {
+        margin-top: 4rem;
+      }
+      h1 {
+        margin-bottom: 0rem;
+      }
       a {
         color: var(--link-color);
+        &:hover {
+          color: rgb(var(--accent));
+        }
       }
       li:not(.link-card, .review) a:hover {
         text-decoration: underline;
@@ -93,18 +103,43 @@ const { title, date } = frontmatter;
         height:1px;
         overflow:hidden;
       }
-      .copy-code {
+      pre, code {
+        tab-size: 2;
+        -moz-tab-size: 2;
+        -o-tab-size: 2;
+      }
+      pre {
+        border: 2px solid var(--text-color);
+        margin-block: 3rem;
+        padding: 2rem;
+      }
+      p:has(img) {
+        display: block;
+        margin-block: 3rem
+      }
+      p img {
+        display: block;
+      }
+      .post-date {
+        margin-top: 0.5rem
+      }
+      .code-block-wrapper {
+        position: relative;
+      }
+      .copy-code-button {
         position: absolute;
+        border: 2px solid var(--text-color);
+        color: var(--text-color);
+        font-weight: bold;
+        cursor: pointer;
         top: 0;
         right: 0;
-        background-color: #3730a3;
-        padding: 0.25rem 0.5rem;
-        font-size: 0.75rem;
-        line-height: 1rem;
+        background-color: var(--accent-color-2);
+        padding: .5rem;
+        line-height: 1.5;
       }
-
-      .copy-code:hover {
-        background-color: #312e81;
+      .copy-code-button:hover {
+        filter: brightness(1.1);
       }
     </style>
   </body>

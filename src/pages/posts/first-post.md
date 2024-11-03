@@ -1,7 +1,8 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
 title: 'Hello, World!'
-date: '09 Aug 2022'
+date: 'November 3rd, 2024'
+caption: 'My first blog post where I just add a bunch of random markdown content.'
 ---
 
 All frontmatter properties are available as props to an Astro layout component.
@@ -20,5 +21,7 @@ function coolFunction(length) {
 
 coolFunction(10)
 ```
+
+![Alt text](https://picsum.photos/400 'Title')
 
 Here is more copy
