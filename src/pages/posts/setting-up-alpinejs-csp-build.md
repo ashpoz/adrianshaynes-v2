@@ -20,8 +20,61 @@ Luckily for us, Alpine.js includes a CSP build that avoids security vunerabiliti
 
 
 ## Okay, enough of my yapping. Let's install Alpine.js using their CSP build!
+In this tutorial, we will install the CSP build via NPM but you can also include via CDN like so:
+```html
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/csp@3.x.x/dist/cdn.min.js"></script>
+``` 
 
-## How to use the CSP build
+To install the build with npm, use the following command while in the root of your project:
+```bash
+npm install @alpinejs/csp
+```
+
+To initialize the CSP build in your project, include the following code in your main JavaScript file.
+```javascript
+import Alpine from '@alpinejs/csp'
+ 
+window.Alpine = Alpine
+ 
+Alpine.start()
+```
+
+That's pretty much it! The main difference in writing Alpine.js using the CSP build, is that you will write your JavaScript logic in a separate file, and reference Alpine's properties and methods by name only. You will NOT be able to add any expressions directly to your HTML. 
+
+For example, this is how a counter works in regular Alpine:
+```html
+<div x-data="{ count: 1 }">
+    <button @click="count++">Increment</button>
+    <span x-text="count"></span>
+</div>
+```
+
+Notice the `x-data` contains an object, and the `@click` attribute contains a JavaScript expression. This will not work in Alpine's CSP build. Instead, you will need to make the following changes to your code:
+
+```html
+<div x-data="counter">
+    <button @click="increment">Increment</button>
+    <span x-text="count"></span>
+</div>
+```
+
+Then, in your JavaScript, you will add the Alpine logic like so:
+```javascript
+Alpine.data('counter', () => ({
+    count: 1,
+ 
+    increment() {
+        this.count++
+    },
+}))
+```
+
+In this example, we can scope logic to our counter component by using `Alpine.data('counter')`, and creating properties like `count` and methods like `increment` in an object. 
+
+Obviously, we lose out on adding logic directly in our html, but I kinda like separating the logic from the markup and the JavaScript personally. This way, we can still easily see what component the HTML is attached to in the markup, along with any event listeners like `@click`, and keep things clean by storing actual JavaScript code inside a JavaScript file. 
+
+## A better way to use the CSP build
+So what would this look like in a real project?  
 
 ## Things to keep in mind when using the CSP build
 
