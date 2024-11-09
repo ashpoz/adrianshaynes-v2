@@ -1,5 +1,5 @@
 ---
-const letterboxRssFeed = `${Astro.url.origin}/.netlify/functions/letterbox`;
+const letterboxRssFeed = `${Astro.url.origin}/api/letterbox`;
 const response = await fetch(letterboxRssFeed);
 const data = await response.json();
 const rssItems = data.rss.channel[0].item;
@@ -38,17 +38,17 @@ const removeSpoilerReview = (str: String) => {
                   {item["letterboxd:filmTitle"]} <span>🔗</span>
                 </h2>
                 <div>
-                  <span class="review__stars">
+                  <div class="review__stars">
                     {Array.from(
                       Array(Number(item["letterboxd:memberRating"])),
                       (_) => {
                         return "⭐️";
                       }
                     )}
-                  </span>
-                  <span class="review__date">
+                  </div>
+                  <div class="review__date">
                     Added {formatDate(item.pubDate)}
-                  </span>
+                  </div>
                 </div>
                 {item.description.toString().includes("spoilers") ? (
                   <div
@@ -97,10 +97,11 @@ const removeSpoilerReview = (str: String) => {
     font-size: 1.25rem;
     transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  p {
+  .review p {
     margin-top: 0.5rem;
     margin-bottom: 0;
     color: #444;
+    font-size: clamp(16px, 1.25vw + 0.5rem, 1rem);
   }
   .review:is(:hover, :focus-within) {
     background-position: 0;
