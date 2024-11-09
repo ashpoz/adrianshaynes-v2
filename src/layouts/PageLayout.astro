@@ -1,6 +1,7 @@
 ---
 import TopBar from "../components/TopBar.astro";
 import Nav from "../components/Nav.astro";
+import "../css/base.css";
 
 export interface Props {
   title: string;
@@ -22,70 +23,5 @@ const { title } = Astro.props;
     <TopBar />
     <Nav />
     <slot />
-    <style is:global>
-      :root {
-        --accent: 104, 109, 224;
-        --accent-color: rgb(var(--accent));
-        --accent-gradient: linear-gradient(
-          45deg,
-          rgb(var(--accent)),
-          #543fd7 30%,
-          white 60%
-        );
-      }
-      html[data-theme="light"] {
-        --background-color: #ecf0f1;
-        --text-color: #121416d8;
-        --link-color: var(--accent-color);
-      }
-
-      html[data-theme="dark"] {
-        --background-color: #212a2e;
-        --text-color: #f7f8f8;
-        --link-color: var(--accent-color);
-      }
-      html {
-        font-family: system-ui, sans-serif;
-      }
-      body {
-        height: 100vh;
-        margin: 0;
-        background: var(--background-color);
-        color: var(--text-color);
-      }
-      code {
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-      }
-      main {
-        line-height: 1.5;
-        margin: auto;
-        max-width: 75rem;
-        position: relative;
-        padding: clamp(1.5rem, 3vw + 1rem, 4rem);
-      }
-      a {
-        color: var(--link-color);
-        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        &:hover {
-          filter: brightness(80%);
-        }
-      }
-      li:not(.link-card, .review) a:hover {
-        text-decoration: underline;
-        filter: brightness(80%);
-      }
-      hr {
-        border-bottom: 2px dashed var(--text-color);
-      }
-      .sr-only {
-        position:absolute;
-        left:-10000px;
-        top:auto;
-        width:1px;
-        height:1px;
-        overflow:hidden;
-      }
-    </style>
   </body>
 </html>
