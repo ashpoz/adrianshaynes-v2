@@ -27,7 +27,6 @@ html {
   font-family: system-ui, sans-serif;
 }
 body {
-  height: 100vh;
   margin: 0;
   background: var(--background-color);
   color: var(--text-color);

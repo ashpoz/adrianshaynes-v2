@@ -1,7 +1,7 @@
 ---
 import TopBar from '../components/TopBar.astro'
 import Nav from '../components/Nav.astro'
-import "../css/base.css";
+import '../css/base.css'
 
 export interface Props {
 	frontmatter: {
@@ -18,7 +18,7 @@ const { title, date } = frontmatter
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
@@ -45,72 +45,85 @@ const { title, date } = frontmatter
 				max-width: 700px;
 				padding-inline: clamp(20px, 5vw, 40px);
 				position: relative;
-				article {
-					margin-top: 4rem;
-				}
-				h1 {
-					margin-bottom: 0rem;
-				}
-				a {
-					color: var(--link-color);
-					&:hover {
-						color: rgb(var(--accent));
-					}
-				}
-				li:not(.link-card, .review) a:hover {
-					text-decoration: underline;
-					filter: brightness(80%);
-				}
-				pre,
-				code {
-					tab-size: 2;
-					-moz-tab-size: 2;
-					-o-tab-size: 2;
-				}
-				pre {
-					border: 2px solid var(--text-color);
-					margin-block: 3rem;
-					padding: 2rem;
-				}
-				p:has(img) {
-					display: block;
-					margin-block: 3rem;
-				}
-				p {
-					img {
-						display: block;
-					}
-					code {
-						background-color: #212a2e;
-						box-decoration-break: clone;
-						-webkit-box-decoration-break: clone;
-						color: var(--code-text-color);
-						padding: 0.15em 0.3em;
-					}
-				}
-				.post-date {
-					font-size: clamp(14px, 1vw + 0.75rem, 1.25rem);
-					margin-top: 0.5rem;
-				}
-				.code-block-wrapper {
-					position: relative;
-					font-size: clamp(16px, 1.25vw + 0.5rem, 1.25rem);
-				}
-				.copy-code-button {
-					position: absolute;
-					border: 2px solid var(--text-color);
-					color: var(--white);
-					font-weight: bold;
-					cursor: pointer;
-					top: 0;
-					right: 0;
-					background-color: var(--accent-color-2);
-					padding: 0.5rem;
-					line-height: 1.5;
-				}
-				.copy-code-button:hover {
-					filter: brightness(1.1);
-				}
+			}
+
+			main.blog-post article {
+				margin-top: 4rem;
+			}
+
+			main.blog-post h1 {
+				margin-bottom: 0rem;
+			}
+
+			main.blog-post a {
+				color: var(--link-color);
+			}
+
+			main.blog-post a:hover {
+				color: rgb(var(--accent));
+			}
+
+			main.blog-post li:not(.link-card, .review) a:hover {
+				text-decoration: underline;
+				filter: brightness(80%);
+			}
+
+			main.blog-post pre,
+			main.blog-post code {
+				tab-size: 2;
+				-moz-tab-size: 2;
+				-o-tab-size: 2;
+			}
+
+			main.blog-post pre {
+				border: 2px solid var(--text-color);
+				margin-block: 3rem;
+				padding: 2.5rem 1rem;
+			}
+
+			main.blog-post p:has(img) {
+				display: block;
+				margin-block: 3rem;
+			}
+
+			main.blog-post p img {
+				display: block;
+			}
+
+			main.blog-post p code {
+				background-color: #212a2e;
+				box-decoration-break: clone;
+				-webkit-box-decoration-break: clone;
+				color: var(--code-text-color);
+				overflow-wrap: break-word;
+				padding: 0.15em 0.3em;
+			}
+
+			main.blog-post .post-date {
+				font-size: clamp(14px, 1vw + 0.75rem, 1.25rem);
+				margin-top: 0.5rem;
+			}
+
+			main.blog-post .code-block-wrapper {
+				position: relative;
+				font-size: clamp(16px, 1.25vw + 0.5rem, 1.25rem);
+			}
+
+			main.blog-post .copy-code-button {
+				position: absolute;
+				border: 2px solid var(--text-color);
+				color: var(--white);
+				font-weight: bold;
+				cursor: pointer;
+				top: 0;
+				right: 0;
+				background-color: var(--accent-color-2);
+				padding: 0.5rem;
+				line-height: 1.5;
+			}
+
+			main.blog-post .copy-code-button:hover {
+				filter: brightness(1.1);
 			}
 		</style>
 	</body>
