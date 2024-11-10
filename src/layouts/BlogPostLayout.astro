@@ -28,18 +28,21 @@ const { title, date, caption, tags } = frontmatter
 		<!-- Basic Meta Tags -->
 		<meta name="title" content={title}>
 		<meta name="description" content={caption}>
+		<meta name="author" content="Adrian S. Haynes">
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website">
 		<meta property="og:url" content="https://adrianshaynes.com/">
 		<meta property="og:title" content={title}>
 		<meta property="og:description" content={caption}>
+		<meta property="og:type" content="article" />
 		<meta property="og:image" content={SharePreviewImage?.src}>
 		<meta property="og:image:width" content="1200">
 		<meta property="og:image:height" content="630">
 		<meta property="og:image:width" content="1200">
 		<meta property="og:image:height" content="630">
 		<meta property="og:locale" content="en_US" />
+		<meta property="og:author" content="Adrian S. Haynes">
 
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image">
