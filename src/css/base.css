@@ -8,6 +8,7 @@
     #543fd7 30%,
     white 60%
   );
+  --black: #121416d8;
   --white: #f7f8f8;
   --sky-blue: #9ECBFF;
   --code-text-color: var(--sky-blue);

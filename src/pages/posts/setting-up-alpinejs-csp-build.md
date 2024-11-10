@@ -39,7 +39,7 @@ window.Alpine = Alpine
 Alpine.start()
 ```
 
-NOTE: `@alpinejs/csp` assumes you are using a build tool (like Vite or Webpack) to interpret the base specifier (the `@` symbol in the module). If you aren't using a build tool, simply include the path to the node module: `./node_modules/@alpinejs/csp/dist/module.esm.js`
+>**Note:** `@alpinejs/csp` assumes you are using a build tool (like Vite or Webpack) to interpret the base specifier (the `@` symbol in the module). If you aren't using a build tool, simply include the path to the node module: `./node_modules/@alpinejs/csp/dist/module.esm.js`
 
 That's pretty much it! The main difference in writing Alpine.js using the CSP build, is that you will write your JavaScript logic in a separate file, and reference Alpine's properties and methods by name only. You will NOT be able to add any expressions directly to your HTML. 
 
@@ -125,8 +125,8 @@ Inside our Modal component markup, let's add a button to trigger opening our Mod
   </template>
 </div>
 ```
-
-NOTE: If you're not familiar with the `<dialog>` element it's a super easy way to quickly create a modal. It includes easy to use methods for opening and closing, a pseudo element `::backdrop` for easily styling the overlay, and the ESC key to close, and keyboard focus trap works out of the box. Also, it has [baseline support](https://caniuse.com/?search=dialog) for modern browsers.
+ 
+>**Note:** If you're not familiar with the `<dialog>` element it's a super easy way to quickly create a modal. It includes easy to use methods for opening and closing, a pseudo element `::backdrop` for easily styling the overlay, and the ESC key to close, and keyboard focus trap works out of the box. Also, it has [baseline support](https://caniuse.com/?search=dialog) for modern browsers.
 
 We are using Alpine directive `x-teleport` here to transport our template to the body, since we want the modal's backdrop to take up the entire screen. More about `x-teleport` <a href="https://alpinejs.dev/directives/teleport" rel="noopener noreferrer" target="_blank">here.</a>
 
