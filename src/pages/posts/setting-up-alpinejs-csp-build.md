@@ -75,7 +75,7 @@ In this example, we can scope logic to our counter component by using `Alpine.da
 
 Obviously, we lose out on adding logic directly in our html, but I kinda like separating the logic from the markup and the JavaScript personally. This way, we can still easily see what component the HTML is attached to in the markup, along with any event listeners like `@click`, and keep things clean by storing actual JavaScript code inside a JavaScript file. 
 
-## A better way to use the CSP build
+## How to build Alpine.js components using the CSP build
 So what would this look like in a real project? Let's build a modal component to give us a better sense of what this would look like. Our modal component should open on the click of a button, and have the ability to close with a button inside the modal. 
 
 Let's create a `Modal.js` file and add it to a `components` directory. Inside `Modal.js`, let's add some basic boilerplate code just to make sure it works:
@@ -94,6 +94,20 @@ Now in our markup, let's add our component like so:
 
 ```html
 <div x-data="Modal"></div>
+```
+
+Now let's import our `Modal.js` component and initialize it in our main JavaScript file:
+
+```javascript
+import Modal from './components/Modal.js'
+ 
+window.Alpine = Alpine
+
+// here is where you init your components,
+// after window.Alpine and before Alpine.start()
+Alpine.data('Modal', Modal)
+ 
+Alpine.start()
 ```
 
 If you see your Modal's `console.log()` in the `init()` function, than your Alpine component is officially working! Okay now let's get to the good stuff. 
