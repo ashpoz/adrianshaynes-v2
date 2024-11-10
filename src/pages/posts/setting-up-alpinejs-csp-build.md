@@ -112,7 +112,7 @@ Alpine.start()
 
 If you see your Modal's `console.log()` while testing the page, then your Alpine component is officially working! Okay now let's get to the good stuff. 
 
-Inside our Modal component markup, let's add a button to trigger opening our Modal, and our actual Modal.
+Inside our Modal component markup, let's add a button to trigger opening our Modal, and a `<dialog>` element which will store our Modal contents.
 
 ```html
 <div x-data="Modal">
