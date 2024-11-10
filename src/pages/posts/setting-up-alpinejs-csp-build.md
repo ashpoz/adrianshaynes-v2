@@ -3,6 +3,7 @@ layout: ../../layouts/BlogPostLayout.astro
 title: 'How to set up Alpine.js using the CSP build.'
 date: 'November 3rd, 2024'
 caption: 'Alpine.js offers a CSP (Content Security Policy) build that is more secure, while offering many of the same benefits of using the framework.'
+tags: 'Alpine.js, CSP, Content Security Policy, Frontend, Web Development, JavaScript'
 ---
 
 Lightweight JavaScript framework, Alpine.js is awesome. However, there are security concerns using the framework due to violating the "unsafe-eval" Content Security Policy. Luckily, the Alpine.js team offers a CSP (Content Security Policy) build. 

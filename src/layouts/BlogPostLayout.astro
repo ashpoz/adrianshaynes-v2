@@ -2,18 +2,19 @@
 import TopBar from '../components/TopBar.astro'
 import Nav from '../components/Nav.astro'
 import '../css/base.css'
-import SharePreviewImage from "../images/share-preview.svg";
+import SharePreviewImage from "../images/share-preview.jpg";
 
 export interface Props {
 	frontmatter: {
 		title: string
 		date: string
-		caption: string
+		caption: string,
+		tags: string,
 	}
 }
 
 const { frontmatter } = Astro.props
-const { title, date, caption } = frontmatter
+const { title, date, caption, tags } = frontmatter
 ---
 
 <!doctype html>
@@ -36,6 +37,9 @@ const { title, date, caption } = frontmatter
 		<meta property="og:image" content={SharePreviewImage?.src}>
 		<meta property="og:image:width" content="1200">
 		<meta property="og:image:height" content="630">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+		<meta property="og:locale" content="en_US" />
 
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image">
@@ -43,6 +47,12 @@ const { title, date, caption } = frontmatter
 		<meta name="twitter:title" content={title}>
 		<meta name="twitter:description" content={caption}>
 		<meta name="twitter:image" content={SharePreviewImage?.src}>
+
+		<!-- Blog article specific -->
+		<meta property="article:published_time" content={date} />
+		<meta property="article:author" content="Adrian S. Haynes" />
+		<meta property="article:section" content="Blog" />
+		<meta property="article:tag" content={tags} />
 	</head>
 	<body>
 		<TopBar />
