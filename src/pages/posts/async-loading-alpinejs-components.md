@@ -9,7 +9,7 @@ tags: 'Alpine.js, Frontend, Web Development, JavaScript, Async Alpine, Alpine Pl
 ## Overview
 As your component library grows, you will inevitably start looking for ways to optimize your JavaScript bundle size.
 
-While lazy-loading components is a built-in feature in many JavaScript frameworks like React and Vue, Alpine.js doesn't currently offer this capability natively. However, a plugin called Async Alpine makes this possible.
+While lazy-loading components is a built-in feature in many JavaScript frameworks like React and Vue, Alpine.js doesn't currently offer this capability natively. However, a plugin called [Async Alpine](https://async-alpine.dev/) makes this possible.
 
 ## Installing Async Alpine
 You can install and load either using their CDN, or via npm.
