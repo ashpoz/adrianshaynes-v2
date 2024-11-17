@@ -9,7 +9,7 @@ const posts = await Astro.glob('./posts/*.md');
 <PageLayout title="Adrian S. Haynes" description="My name is Adrian Sebastian Haynes. I am a web developer, musician, and horror movie fanatic.">
   <main>
     <section class="intro">
-      <h2 class="sr-only">Intro</h2>
+      <h1 class="sr-only">Welcome to Adrian Sebastian Haynes' website!</h1>
       <br />
       My name is <span class="name">Adrian Sebastian Haynes</span>. I am a
       <a href="/web" class="interest">web developer 🧑‍💻</a>,
@@ -18,8 +18,8 @@ const posts = await Astro.glob('./posts/*.md');
     </section>
     <hr>
     <section class="blog">
-      <h2 class="sr-only">Blog</h2>
-      <Cards title="Check out my latest posts!">
+      <h2>Check out my latest posts!</h2>
+      <Cards title="">
         {posts.map((post) => (
           <BlogCard
             href={post.url}
@@ -62,6 +62,13 @@ const posts = await Astro.glob('./posts/*.md');
         font-weight: bolder;
       }
     }
+  }
+
+  .latest-posts {
+    margin-top: 2rem;
+  }
+  .latest-posts a {
+    padding: 1rem 0;
   }
 
   .greeting {

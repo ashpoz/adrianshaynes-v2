@@ -1,11 +1,14 @@
-<button id="theme-toggle" type="button"></button>
+<button id="theme-toggle" type="button">
+  <span class="theme-toggle-icon" aria-hidden="true"></span>
+  <span class="sr-only theme-toggle-text" aria-live="polite"></span>
+</button>
 
 <style>
   button {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: clamp(2.5rem, 3vw + 1rem, 3rem);
+    font-size: clamp(3rem,3vw + 1rem,3rem);
     line-height: 1;
     margin-left: auto;
     margin-right: 2rem;
@@ -13,17 +16,12 @@
     padding: 0;
     z-index: 1;
   }
-  button span {
-    display: none;
-  }
-  button span.active {
-    display: block;
-  }
 </style>
 
 <script is:inline>
   const toggleId = "theme-toggle";
-  const toggle = document.querySelector(`#${toggleId}`);
+  const toggleIcon = document.querySelector(`#${toggleId} .theme-toggle-icon`);
+  const toggleText = document.querySelector(`#${toggleId} .theme-toggle-text`);
 
   const storedTheme =
     localStorage.getItem("theme") ||
@@ -32,16 +30,20 @@
       : "light");
 
   const updateTheme = (theme) => {
-    theme === "light"
-      ? (toggle.textContent = "🌛")
-      : (toggle.textContent = "🌞");
+    toggleText.textContent = 'Toggle dark mode'
+    toggleIcon.textContent = '🌛'
+
+    if (theme === 'dark') {
+      toggleText.textContent = 'Toggle light mode'
+      toggleIcon.textContent = '🌞'
+    }
 
     document.documentElement.setAttribute("data-theme", theme);
   };
 
   updateTheme(storedTheme);
 
-  toggle.addEventListener("click", () => {
+  toggleIcon.addEventListener("click", () => {
     let currentTheme = document.documentElement.getAttribute("data-theme");
     currentTheme = currentTheme === "light" ? "dark" : "light";
 
