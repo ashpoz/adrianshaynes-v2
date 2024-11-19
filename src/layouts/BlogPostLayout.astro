@@ -13,8 +13,11 @@ export interface Props {
 	}
 }
 
+console.log(Astro.request.url)
+
 const { frontmatter } = Astro.props
 const { title, date, caption, tags } = frontmatter
+const currentURL = Astro.request.url
 ---
 
 <!doctype html>
@@ -32,7 +35,7 @@ const { title, date, caption, tags } = frontmatter
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://adrianshaynes.com/">
+		<meta property="og:url" content={currentURL}>
 		<meta property="og:title" content={title}>
 		<meta property="og:description" content={caption}>
 		<meta property="og:type" content="article" />
@@ -44,7 +47,7 @@ const { title, date, caption, tags } = frontmatter
 
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:url" content="https://adrianshaynes.com/">
+		<meta name="twitter:url" content={currentURL}>
 		<meta name="twitter:title" content={title}>
 		<meta name="twitter:description" content={caption}>
 		<meta name="twitter:image" content={SharePreviewImage?.src}>
