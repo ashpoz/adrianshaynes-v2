@@ -111,7 +111,7 @@ Loading strategies help you control exactly when and how your components load, a
 
 By default, your Async Alpine component is loaded as **Eager**, which means that if the component is present on the page, it will be loaded asynchronously with the highest priority.
 
-**Idle** is perfect for non-critical components that aren't essential for initial load. Async Alpine uses an arbitrary `200ms` delay before loading any idle components.
+**Idle** is perfect for non-critical components that aren't essential for initial load. Async Alpine uses `requestIdleCallback` to load components during the browser's "idle" periods. For browsers that don't support `requestIdleCallback` yet (Safari doesn't currently), an arbitrary `200ms` delay will be used.
 
 **Visible** will utilize `IntersectionObserver` to load the component only if it's in view. 
 
