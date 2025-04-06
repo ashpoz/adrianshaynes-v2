@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
 title: 'Handling State Across Page Loads with Alpine.js Using the Persist Plugin'
-date: 'March 15th, 2025'
-sortDate: '2025-03-15'
+date: 'April 7th, 2025'
+sortDate: '2025-04-07'
 caption: 'In this article, we explore how to use the Persist plugin, an Alpine.js plugin that allows you to save data across page loads.'
 tags: 'Alpine.js, Frontend, Web Development, JavaScript, Persist, Alpine Plugins, Cookies, Local Storage, eCommerce.'
 ---
