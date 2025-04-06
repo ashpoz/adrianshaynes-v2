@@ -2,6 +2,7 @@
 layout: ../../layouts/BlogPostLayout.astro
 title: 'How to set up Alpine.js using the CSP build.'
 date: 'November 3rd, 2024'
+sortDate: '2024-11-03'
 caption: 'Alpine.js offers a CSP (Content Security Policy) build that is more secure, while offering many of the same benefits of using the framework.'
 tags: 'Alpine.js, CSP, Content Security Policy, Frontend, Web Development, JavaScript'
 ---

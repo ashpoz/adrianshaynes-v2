@@ -2,6 +2,7 @@
 layout: ../../layouts/BlogPostLayout.astro
 title: 'How to lazy-load Alpine.js components using the Async Alpine plugin'
 date: 'November 17th, 2024'
+sortDate: '2024-11-17'
 caption: 'In this article, we look into how to leverage the plugin, Async Alpine, in order to lazy-load Alpine.js components.'
 tags: 'Alpine.js, Frontend, Web Development, JavaScript, Async Alpine, Alpine Plugins, Lazy-Loading'
 ---

@@ -4,12 +4,16 @@ import Cards from "../components/Cards.astro";
 import BlogCard from "../components/BlogCard.astro";
 
 const posts = await Astro.glob('./posts/*.md');
+
+const sortedPosts = posts.sort((a, b) => {
+  return new Date(b.frontmatter.sortDate).getTime() - new Date(a.frontmatter.sortDate).getTime();
+});
 ---
 <PageLayout title="Adrian's Blog" description="Where I attempt to turn ramblings into semi-coherent blog articles.">
   <main>
     <h2>All Posts</h2>
       <Cards title="">
-        {posts.map((post) => (
+        {sortedPosts.map((post) => (
           <BlogCard
             href={post.url}
             title={post.frontmatter.title}

@@ -4,6 +4,10 @@ import Cards from "../components/Cards.astro";
 import BlogCard from "../components/BlogCard.astro";
 
 const posts = await Astro.glob('./posts/*.md');
+
+const sortedPosts = posts.sort((a, b) => {
+  return new Date(b.frontmatter.sortDate).getTime() - new Date(a.frontmatter.sortDate).getTime();
+});
 ---
 
 <PageLayout title="Adrian S. Haynes" description="My name is Adrian Sebastian Haynes. I am a web developer, musician, and horror movie fanatic.">
@@ -20,7 +24,7 @@ const posts = await Astro.glob('./posts/*.md');
     <section class="blog">
       <h2>Check out my latest posts!</h2>
       <Cards title="">
-        {posts.map((post) => (
+        {sortedPosts.map((post) => (
           <BlogCard
             href={post.url}
             title={post.frontmatter.title}
