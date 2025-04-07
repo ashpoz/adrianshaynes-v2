@@ -7,6 +7,24 @@ caption: 'In this article, we explore how to use the Persist plugin, an Alpine.j
 tags: 'Alpine.js, Frontend, Web Development, JavaScript, Persist, Alpine Plugins, Cookies, Local Storage, eCommerce.'
 ---
 
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Installing the Persist Plugin](#installing-the-persist-plugin)
+   - [CDN](#cdn)
+   - [NPM](#npm)
+3. [Quick Example](#quick-example)
+4. [Storing as Cookies Instead of Local Storage](#storing-as-cookies-instead-of-local-storage)
+5. [Ecommerce Cart Example](#ecommerce-cart-example)
+   - [Build Our Products Data](#build-our-products-data)
+   - [Render Products and Add to Cart Forms](#render-products-and-add-to-cart-forms)
+   - [Set Up Product Alpine.js Component](#set-up-product-alpinejs-component)
+   - [Set Up Our Cart Store](#set-up-our-cart-store)
+   - [Update Our Cart Items](#update-our-cart-items)
+   - [Render Our Cart Items](#render-our-cart-items)
+   - [Bonus: Add Remove Item Logic](#bonus-add-remove-item-logic)
+6. [Wrapping Up](#wrapping-up)
+
 ## Overview
 Picture this, you are using Alpine.js to handle state of your website or application. But wait, what happens when the user navigates to another page or refreshes the page? Your state is GONE 😢   
 
@@ -69,6 +87,7 @@ You can set a custom key by adding `.as()` to the end of your persist property l
 ```
 
 ## Storing as Cookies instead of localStorage
+<a id="storing-as-cookies-instead-of-local-storage"></a>
 This is cool, but what if we need to use browser cookies instead? Luckily, they provide an example on how to set that up. 
 
 Here is the example they provide in their docs:
@@ -319,12 +338,12 @@ Then, add a button that will handle our remove logic. We will need to access the
             <li>
                 <span x-text="item.name"></span>, Quantity:
                 <span x-text="item.quantity"></span>
-                <!-- Add this! -->
+                <!-- Copy below this line -->
                 <button @click="removeFromCart" :data-uuid="item.uuid">
                     Remove
                 </button>
+                <!-- Copy above this line -->
             </li>
-            <!--  -->
         </template>
     </ul>
 </div>
