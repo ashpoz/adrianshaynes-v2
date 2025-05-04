@@ -33,6 +33,16 @@ const extractImgSrc = (str: String) => {
 const extractDescription = (str: String) => {
 	return str.toString().match(/<p>(?!.*<img).*?<\/p>/s)?.[0]
 }
+
+const generateStars = (rating: String) => {
+    const numericRating = Number(rating);
+    if (typeof numericRating === 'number' && numericRating >= 0) {
+        return Array.from({ length: Math.floor(numericRating) }, () => '⭐️');
+    }
+    return ''; // Handle invalid rating
+};
+
+console.log(letterboxRssFeed)
 ---
 
 <ul class="reviews">
@@ -51,20 +61,18 @@ const extractDescription = (str: String) => {
 								</h3>
 								<div>
 									<div class="review__stars">
-										{Array.from(
-											Array(Number(item['letterboxd:memberRating'])),
-											(_) => {
-												return '⭐️'
-											}
-										)}
+										{generateStars(item['letterboxd:memberRating'])}
 									</div>
 									<div class="review__date">
 										Added {formatDate(item.pubDate)}
 									</div>
 								</div>
 								<div class="review__description">
-									<img src={extractImgSrc(item.description)} alt={`${item['letterboxd:filmTitle']} movie poster`} />
-									<p set:html={extractDescription(item.description)}></p>
+									<img
+										src={extractImgSrc(item.description)}
+										alt={`${item['letterboxd:filmTitle']} movie poster`}
+									/>
+									<p set:html={extractDescription(item.description)} />
 								</div>
 							</a>
 						</li>
